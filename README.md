@@ -88,3 +88,10 @@ npm start
 - No authentication or authorization required
 - Phone number is stored as a string to support formats like +91-XXXXXXXXXX
 
+## Components
+
+| Component     | Description                                          |
+|---------------|------------------------------------------------------|
+| Navbar        | App title bar, sticky at top                         |
+| CustomerForm  | Form with validation, sends POST to backend          |
+| CustomerTable | Displays all customers, alternating rows, delete btn |

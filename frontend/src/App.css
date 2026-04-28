@@ -1,0 +1,28 @@
+/* ─── Global Reset ───────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333333;
+  min-height: 100vh;
+}
+
+/* ─── App Container ──────────────────────────────────────── */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ─── Main Content Area ──────────────────────────────────── */
+.main-content {
+  width: 100%;
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 0 24px;
+}

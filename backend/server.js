@@ -46,6 +46,23 @@ app.get('/customers', (req, res) => {
   res.json(customers);
 });
 
+// ─── DELETE /customers/:id ────────────────────────────────
+app.delete('/customers/:id', (req, res) => {
+  const { id } = req.params;
+
+  // Check if customer exists
+  const exists = customers.find(c => c.id === id);
+
+  if (!exists) {
+    return res.status(404).json({ error: 'Customer not found.' });
+  }
+
+  // Remove customer from array
+  customers = customers.filter(c => c.id !== id);
+
+  res.json({ message: `Customer ${id} deleted successfully.` });
+});
+
 // ─── Start Server ─────────────────────────────────────────
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

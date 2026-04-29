@@ -5,15 +5,30 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// ─── CORS — allow both local dev and production frontend ──
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://customer-dashboard-frontend-xqp9.onrender.com'
+];
 
-// ─── Middleware ───────────────────────────────────────────
-app.use(cors());          
-app.use(express.json());   
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
+app.use(express.json());
 
 // ─── In-Memory Storage ────────────────────────────────────
-let customers = [];      
+let customers = [];
 
-// ─── Health Check Route ───────────────────────────────────
+// ─── Health Check ─────────────────────────────────────────
 app.get('/', (req, res) => {
   res.json({ message: 'Customer Management API is running.' });
 });
@@ -22,12 +37,10 @@ app.get('/', (req, res) => {
 app.post('/customers', (req, res) => {
   const { name, email, phone } = req.body;
 
-  // Validate: all fields are required
   if (!name || !email || !phone) {
     return res.status(400).json({ error: 'Name, email, and phone are all required.' });
   }
 
-  // Build new customer object
   const newCustomer = {
     id: uuidv4(),
     name: name.trim(),
@@ -35,10 +48,7 @@ app.post('/customers', (req, res) => {
     phone: phone.trim(),
   };
 
-  // Add to in-memory array
   customers.push(newCustomer);
-
-  // Return the new customer with 201 Created
   res.status(201).json(newCustomer);
 });
 
@@ -51,16 +61,12 @@ app.get('/customers', (req, res) => {
 app.delete('/customers/:id', (req, res) => {
   const { id } = req.params;
 
-  // Check if customer exists
   const exists = customers.find(c => c.id === id);
-
   if (!exists) {
     return res.status(404).json({ error: 'Customer not found.' });
   }
 
-  // Remove customer from array
   customers = customers.filter(c => c.id !== id);
-
   res.json({ message: `Customer ${id} deleted successfully.` });
 });
 

@@ -1,0 +1,23 @@
+services:
+
+  # ─── Backend ────────────────────────────────────────────
+  - type: web
+    name: customer-dashboard-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5000
+
+  # ─── Frontend ───────────────────────────────────────────
+  - type: web
+    name: customer-dashboard-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_BASE
+        sync: false

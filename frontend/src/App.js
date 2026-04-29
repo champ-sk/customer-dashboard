@@ -5,7 +5,7 @@ import CustomerForm from './components/CustomerForm';
 import CustomerTable from './components/CustomerTable';
 import './App.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = process.env.REACT_APP_API_BASE;
 
 const App = () => {
 

@@ -95,3 +95,13 @@ npm start
 | Navbar        | App title bar, sticky at top                         |
 | CustomerForm  | Form with validation, sends POST to backend          |
 | CustomerTable | Displays all customers, alternating rows, delete btn |
+
+
+##  App Flow
+
+1. On load → App.js calls GET /customers → table renders
+2. User fills form → CustomerForm calls POST /customers
+3. On success → fetchCustomers() re-fetches → table updates
+4. User clicks Delete → DELETE /customers/:id is called
+5. Table updates instantly (optimistic UI)
+6. If backend is down → global error banner appears

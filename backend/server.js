@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 // ─── Middleware ───────────────────────────────────────────
 app.use(cors());          
-app.use(express.json());   S
+app.use(express.json());   
 
 // ─── In-Memory Storage ────────────────────────────────────
 let customers = [];      

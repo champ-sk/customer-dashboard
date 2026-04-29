@@ -26,6 +26,5 @@ yarn-error.log*
 frontend/public/
 
 # Environment files
-frontend/.env.production
-frontend/.env.development
+
 .env

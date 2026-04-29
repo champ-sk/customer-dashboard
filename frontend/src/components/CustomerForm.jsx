@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './CustomerForm.css';
 
+
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 const CustomerForm = ({ onCustomerAdded }) => {
 
   // ─── Local State ──────────────────────────────────────────
@@ -39,7 +42,7 @@ const CustomerForm = ({ onCustomerAdded }) => {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/customers', {
+      await axios.post(`${API_BASE}/customers`, {
         name:  name.trim(),
         email: email.trim(),
         phone: phone.trim(),

@@ -1,29 +1,46 @@
 /* ─── Navbar ─────────────────────────────────────────────── */
 .navbar {
   width: 100%;
-  background-color: #1a1a2e;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   padding: 16px 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
   position: sticky;
   top: 0;
   z-index: 100;
   box-sizing: border-box;
 }
 
+.navbar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .navbar-brand {
   color: #ffffff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
+}
+
+.navbar-badge {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
 }
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 600px) {
   .navbar {
-    padding: 14px 20px;
+    padding: 14px 16px;
   }
 
   .navbar-brand {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }

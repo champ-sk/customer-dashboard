@@ -25,6 +25,7 @@ body {
   max-width: 960px;
   margin: 32px auto;
   padding: 0 24px;
+  flex: 1;
 }
 
 /* ─── Global Error Banner ────────────────────────────────── */
@@ -39,6 +40,7 @@ body {
   border-radius: 6px;
   font-size: 0.9rem;
   margin-bottom: 20px;
+  animation: fadeIn 0.3s ease;
 }
 
 .app-error-close {
@@ -53,4 +55,29 @@ body {
 
 .app-error-close:hover {
   color: #990000;
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.82rem;
+  color: #aaaaaa;
+  border-top: 1px solid #e4e6ea;
+  margin-top: auto;
+  background-color: #ffffff;
+}
+
+/* ─── Fade-in Animation ──────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .main-content {
+    margin: 20px auto;
+    padding: 0 16px;
+  }
 }

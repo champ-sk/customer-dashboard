@@ -7,8 +7,11 @@ const CustomerTable = ({ customers, onDelete, loading }) => {
   if (loading) {
     return (
       <div className="table-card">
-        <h2 className="table-title">All Customers</h2>
+        <div className="table-header-row">
+          <h2 className="table-title">All Customers</h2>
+        </div>
         <div className="table-empty">
+          <div className="table-empty-icon">⏳</div>
           <p>Loading customers...</p>
         </div>
       </div>
@@ -19,8 +22,11 @@ const CustomerTable = ({ customers, onDelete, loading }) => {
   if (!customers || customers.length === 0) {
     return (
       <div className="table-card">
-        <h2 className="table-title">All Customers</h2>
+        <div className="table-header-row">
+          <h2 className="table-title">All Customers</h2>
+        </div>
         <div className="table-empty">
+          <div className="table-empty-icon">👤</div>
           <p>No customers found. Add one using the form above.</p>
         </div>
       </div>
@@ -30,16 +36,15 @@ const CustomerTable = ({ customers, onDelete, loading }) => {
   // ─── Table ────────────────────────────────────────────────
   return (
     <div className="table-card">
-      <h2 className="table-title">
-        All Customers
-        <span className="table-count">{customers.length}</span>
-      </h2>
+      <div className="table-header-row">
+        <h2 className="table-title">
+          All Customers
+          <span className="table-count">{customers.length}</span>
+        </h2>
+      </div>
 
-      {/* Wrapper for horizontal scroll on small screens */}
       <div className="table-wrapper">
         <table className="customer-table">
-
-          {/* Header */}
           <thead>
             <tr>
               <th>#</th>
@@ -49,8 +54,6 @@ const CustomerTable = ({ customers, onDelete, loading }) => {
               <th>Action</th>
             </tr>
           </thead>
-
-          {/* Body */}
           <tbody>
             {customers.map((customer, index) => (
               <tr
@@ -72,7 +75,6 @@ const CustomerTable = ({ customers, onDelete, loading }) => {
               </tr>
             ))}
           </tbody>
-
         </table>
       </div>
     </div>
